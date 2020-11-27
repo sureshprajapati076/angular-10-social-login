@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { SocialAuthService, SocialUser } from "angularx-social-login";
 import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
 import { ToastrService } from 'ngx-toastr';
+import { UserprofileComponent } from '../userprofile/userprofile.component';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +16,24 @@ export class HomeComponent implements OnInit {
   user: SocialUser;
   loggedIn: boolean;
 
-  constructor(private authService: SocialAuthService,private toastr: ToastrService) { }
+  constructor(public dialog: MatDialog,private authService: SocialAuthService,private toastr: ToastrService) { }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(UserprofileComponent, {
+      width: '400px',
+      disableClose: true,
+      autoFocus: true
+      //  hasBackdrop: true
+
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+
+    });
+  }
+
+
 
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);

@@ -1,0 +1,48 @@
+
+<h1 mat-dialog-title>Update
+    Profile 
+
+    <button mat-button (click)="closeDialog()" color="warn" class="pull-right" tabIndex=-1>X</button>
+
+</h1>
+<form [formGroup]="updateAcc">
+
+    <mat-form-field class="mat-input-wrapper">
+        <label for="email">Email</label>
+        <input [value]="currentUser?.email" formControlName="email" matInput>
+    </mat-form-field>
+    <mat-error>
+        <span *ngIf="!updateAcc.get('email').valid && updateAcc.get('email').touched">Please
+            enter email!!!</span>
+    </mat-error>
+
+    <mat-form-field class="mat-input-wrapper">
+        <label for="name">Name</label>
+        <input [value]="currentUser?.name" formControlName="name" matInput md-autofocus>
+    </mat-form-field>
+    <mat-error>
+        <span *ngIf="!updateAcc.get('name').valid && updateAcc.get('name').touched">Please
+            enter Full Name Min 4 Characters!!!</span>
+    </mat-error>
+
+    <mat-form-field class="mat-input-wrapper">
+        <label for="address">Address</label>
+        <input [value]="currentUser?.address" formControlName="address" matInput>
+    </mat-form-field>
+    <mat-error>
+        <span *ngIf="!updateAcc.get('address').valid && updateAcc.get('address').touched">Please
+            enter address Min 4 Characters!!!</span>
+    </mat-error>
+
+
+
+
+</form>
+
+
+
+<div mat-dialog-actions class="pull-right">
+    <button mat-button (click)="updateAccount()" mat-flat-button color="primary"
+        [disabled]="!updateAcc.valid">Update</button>
+    <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+</div>

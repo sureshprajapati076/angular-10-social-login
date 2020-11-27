@@ -1,7 +1,11 @@
-FROM node:15.3.0 as build-step
+FROM node:alpine AS builder
+RUN mkdir -p /app
 WORKDIR /app
-COPY package.json ./
+COPY package.json /app
 RUN npm install
-COPY . .
-EXPOSE 4200
-CMD npm run start
+COPY . /app
+RUN npm run build --prod
+FROM nginx:1.17.1-alpine
+COPY --from=builder /app/dist/* /usr/share/nginx/html/
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
