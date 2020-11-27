@@ -1,0 +1,62 @@
+
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div><a href="#" class="navbar-brand">SocialLogin Example</a></div>
+        <ul class="navbar-nav">
+            <li><a class="nav-link" href="/home">Hello World Tab</a></li>
+        </ul>
+    </nav>
+  </header>
+
+
+
+
+    <div class="jumbotron bg-transparent text-center">
+        <div *ngIf="!user" class="card text-center">
+          <h6 class="card-header">
+            Social Login Demo
+          </h6>
+          <div class="card-block">
+            <h4 class="card-title">Not signed in</h4>
+            <p class="card-text">Sign in with</p>
+          </div>
+          <div class="card-block">
+            <button class="btn btn-social-icon btn-google mx-1" (click)="signInWithGoogle()"><span class="fa fa-google"></span></button>
+            <button class="btn btn-social-icon btn-facebook mx-1" (click)="signInWithFB()"><span class="fa fa-facebook"></span></button>
+            <button class="btn btn-social-icon btn-amazon mx-1" (click)="signInWithAmazon()"><span class="fa fa-amazon"></span></button>
+            <button class="btn btn-social-icon btn-amazon mx-1" (click)="signInWithVK()"><span class="fa fa-vk"></span></button>
+          </div>
+        </div>
+        <div *ngIf="user" class="card text-center">
+          <h2 class="card-header">
+            Social Login Demo
+          </h2>
+          <div class="card-block"></div>
+          <img *ngIf="user.photoUrl" class="mx-auto d-block" src="{{ user.photoUrl }}">
+          <div class="card-block">
+            <h4 class="card-title">{{ user.name }}</h4>
+            <p class="card-text">{{ user.email }}</p>
+            <p class="card-text">Logged in with {{ user.provider }}</p>
+          </div>
+          <div class="card-block">
+            <button class="btn btn-danger" (click)="signOut()">Sign out</button>
+          </div>
+        </div>
+      </div>
+      
+
+
+      <mat-slider min="1" max="100" step="1" value="1"></mat-slider>
+
+<div>
+  <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+    <mat-button-toggle value="bold">Bold</mat-button-toggle>
+    <mat-button-toggle value="italic">Italic</mat-button-toggle>
+    <mat-button-toggle value="underline">Underline</mat-button-toggle>
+  </mat-button-toggle-group>
+
+</div>
+
+
+<button (click)="popUp()">Click to Test</button>
+
