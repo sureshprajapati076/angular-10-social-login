@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.0.
 
-[See Read Me File] (https://github.com/sureshprajapati076/angular-10-social-login/blob/master/readme.txt)
+[See Read Me File](https://github.com/sureshprajapati076/angular-10-social-login/blob/master/readme.txt)
 
 ## Development server
 
